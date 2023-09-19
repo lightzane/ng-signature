@@ -1,27 +1,41 @@
-# NgSignature
+# Angular Signature
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.6.
+Creating angular signature by just copying [angular2-signaturepad](https://www.npmjs.com/package/angular2-signaturepad) locally in the project to remove dependency and be compatible with Angular v15+
 
-## Development server
+But still depending on [signature_pad](https://www.npmjs.com/package/signature_pad)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Install Signature Pad
 
-## Code scaffolding
+```bash
+npm i signature_pad
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Copy SignaturePad folder
 
-## Build
+`src/app/signature-pad`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Import to your App
 
-## Running unit tests
+```diff
++import { SignaturePadModule } from './signature-pad/signature-pad.module';
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+@NgModule({
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule,
++       SignaturePadModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
 
-## Running end-to-end tests
+## Use it
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```html
+<signature-pad
+    [options]="signaturePadOptions"
+    (onEndEvent)="drawComplete()">
+</signature-pad>
+```
