@@ -39,3 +39,7 @@ export class AppModule {}
     (onEndEvent)="drawComplete()">
 </signature-pad>
 ```
+
+## Demo
+
+https://lightzane.github.io/ng-signature/
